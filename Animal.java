@@ -1,18 +1,22 @@
-package krishna;
+package com.animal;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+@Entity(name="animal")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Animal {
-void drink(){System.out.println("drink");}
-}
-class Cat extends Animal{
-void walk(){System.out.println("walk");}
-}
-class BabyCat extends Cat{
-void eat(){System.out.println("eat");}
-}
-class TestInheritance2{
-public static void main(String args[]){
-BabyCat c=new BabyCat();
-c.drink();
-c.walk();
-c.eat();
-}
+
+	@Id
+	private int aid;
+
+	public int getAid() {
+		return aid;
+	}
+
+	public void setAid(int aid) {
+		this.aid = aid;
+	}
 }
