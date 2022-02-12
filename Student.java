@@ -1,46 +1,56 @@
-package hibernetdemo;
+package com.manytomany;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Table(name = "student")
+import com.onetomany.Customers;
+
 @Entity
+@Table(name="student")
 public class Student {
 
 	@Id
-	@Column(name="id")
-	private int id;
+	@Column(name="sid")
+	private int studentId;
 
-	@Column(name="name")
-	private String name;
+	@Column(name="sname")
+	private String studentName;
 
-	@Column(name="marks")
-	private int marks;
+	@ManyToMany(fetch=FetchType.LAZY,targetEntity = Course.class,cascade = CascadeType.ALL)
+	@JoinColumn(name="courseid")
+	private Set obj;
 
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public int getMarks() {
-		return marks;
-	}
-	public void setMarks(int marks) {
-		this.marks = marks;
+	public int getStudentId() {
+		return studentId;
 	}
 
-	@Override
-    public String toString() {
-        return "Student [id=" + id + ", Name=" + name + "marks =" + marks + "]";
-    }
+	public void setStudentId(int studentId) {
+		this.studentId = studentId;
+	}
+
+	public String getStudentName() {
+		return studentName;
+	}
+
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
+
+	public Set getObj() {
+		return obj;
+	}
+
+	public void setObj(Set obj) {
+		this.obj = obj;
+	}
 
 }

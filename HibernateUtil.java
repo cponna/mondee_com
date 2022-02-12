@@ -1,4 +1,4 @@
-package hibernetdemo;
+package com.main;
 
 import java.util.Properties;
 
@@ -20,7 +20,7 @@ public class HibernateUtil {
                 Properties settings = new Properties();
 
                 settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/employee");
+                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/college");
                 settings.put(Environment.USER, "root");
                 settings.put(Environment.PASS, "kumari123");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
@@ -29,10 +29,17 @@ public class HibernateUtil {
 
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 
-                settings.put(Environment.HBM2DDL_AUTO, "update");
+                settings.put(Environment.HBM2DDL_AUTO, "create");   
                 configuration.setProperties(settings);
 
-                configuration.addAnnotatedClass(Student.class);
+                configuration.addAnnotatedClass(com.onetomany.Customers.class);
+                configuration.addAnnotatedClass(com.onetomany.Vendor.class);
+
+                configuration.addAnnotatedClass(onetoone.Person.class);
+                configuration.addAnnotatedClass(onetoone.PanCard.class);
+
+                configuration.addAnnotatedClass(com.manytomany.Student.class);
+                configuration.addAnnotatedClass(com.manytomany.Course.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties()).build();
@@ -41,4 +48,4 @@ public class HibernateUtil {
         }
         return sessionFactory;
     }
-} 
+}
