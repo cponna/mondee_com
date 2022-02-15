@@ -1,4 +1,4 @@
-package com.ex;
+package com.travel;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

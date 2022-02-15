@@ -1,4 +1,4 @@
-package com.ex;
+package com.travel;
 
 public class Car implements Vehicle {
 
