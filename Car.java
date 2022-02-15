@@ -1,21 +1,30 @@
-package com.vehicle;
+package com.ex;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
+public class Car implements Vehicle {
 
-@Entity
-@PrimaryKeyJoinColumn(name = "carNo")
-public class Car extends vehicle {
+	private String fuelType;
+	private int speed;
 
-	@Column(name="carName")
-	private String carName;
-
-	public String getCarName() {
-		return carName;
+	public String getFuelType() {
+		return fuelType;
 	}
 
-	public void setCarName(String carName) {
-		this.carName = carName;
+	public void setFuelType(String fuelType) {
+		this.fuelType = fuelType;
 	}
+
+	public int getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+
+	public void move() {
+		System.out.println("Car started!!");
+		System.out.println("Fuel Type is "+fuelType);
+		System.out.println("Speed is "+speed);
+	}
+
 }
